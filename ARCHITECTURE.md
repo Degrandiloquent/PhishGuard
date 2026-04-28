@@ -1,5 +1,85 @@
 # Architecture Overview
 
+## Security Architecture
+
+┌──────────────────────────────────────────────┐
+│            USER / ENDPOINT LAYER            │
+│----------------------------------------------│
+│  • Browser Extension                         │
+│  • Email Plugin (Outlook/Gmail)              │
+│  • File/Download Scanner                     │
+│                                              │
+│  → Captures links, emails, attachments       │
+└──────────────────────┬───────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────┐
+│         API GATEWAY / INGESTION LAYER       │
+│----------------------------------------------│
+│  • Authentication (OAuth/API Keys)           │
+│  • Rate Limiting                             │
+│  • Request Validation                        │
+│                                              │
+│  → Secure routing to AI Engine               │
+└──────────────────────┬───────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────┐
+│             AI DETECTION ENGINE             │
+│----------------------------------------------│
+│  • NLP Phishing Detector (email text)        │
+│  • URL & Domain Analyzer                     │
+│  • Attachment Scanner (PDFs/docs)            │
+│  • User Behavior Risk Model                  │
+│                                              │
+│  → Outputs Risk Score (Low/Med/High)         │
+└──────────────────────┬───────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────┐
+│         DECISION & RESPONSE ENGINE          │
+│----------------------------------------------│
+│  IF Low    → Warn User                       │
+│  IF Medium → Block + Alert                   │
+│  IF High   → Isolate + Escalate              │
+│                                              │
+│  Actions:                                    │
+│  • Block malicious links                     │
+│  • Quarantine files                          │
+│  • Revoke sessions                           │
+│  • Force password reset                      │
+└──────────────────────┬───────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────┐
+│      RISK ESCALATION (DIGITAL → REAL)       │
+│----------------------------------------------│
+│  • Credential compromise → Identity risk     │
+│  • Finance phishing → Fraud risk             │
+│  • Repeated clicks → Insider vulnerability   │
+│                                              │
+│  → Alerts security / triggers escalation     │
+└──────────────────────┬───────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────┐
+│      SECURE LOGGING & INTEGRITY LAYER       │
+│----------------------------------------------│
+│  • Tamper-proof logs (hash chaining)         │
+│  • Audit trail                              │
+│  • Incident history                          │
+└──────────────────────┬───────────────────────┘
+                       │
+                       ▼
+┌──────────────────────────────────────────────┐
+│        DASHBOARD & ADMIN CONSOLE          │
+│----------------------------------------------│
+│  • Real-time alerts                          │
+│  • User risk scores                          │
+│  • Incident timeline                         │
+│  • Threat analytics                          │
+└──────────────────────────────────────────────┘
+
 PhishGuard operates across 6 key layers:
 
 ## User & Endpoint Layer
