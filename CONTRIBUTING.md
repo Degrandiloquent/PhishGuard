@@ -2,11 +2,11 @@
 
 ## Team Structure
 
-- **Backend Developer**: Handles core API, routes, middleware, database connections, and service logic
-- **AI/ML Engineer**: Handles AI detection engines, risk scoring, NLP, and pattern analysis
-- **Frontend Developer**: Builds web UI, dashboard, and user interfaces
-- **App Developer**: Builds mobile apps (iOS/Android) and browser extensions
-- **Full Stack/DevOps**: Configuration, deployment, security, and infrastructure
+- **Technical Product Lead/Security Architecture**: Oversees gateway layer, security policies, system architecture, and AI engine integration
+- **Backend Engineer**: Implements routes, database schemas, controllers, and core API logic
+- **AI Engineer**: Builds AI detection engines, risk scoring algorithms, and threat analysis models
+- **App Developer**: Handles client-side integration, plugins (browser/email), and utility functions
+- **Frontend Developer**: Builds dashboard UI, alerts interface, and web-based user experience
 
 ## Before You Start
 
